@@ -6,11 +6,9 @@ public class test {
 
 
         int hours1 = Integer.parseInt(sc.next());
-        System.out.print(':');
         int minutes1 = Integer.parseInt(sc.next());
 
         int hours2 = Integer.parseInt(sc.next());
-        System.out.print(':');
         int minutes2 = Integer.parseInt(sc.next());
 
         boolean validTime = false;
