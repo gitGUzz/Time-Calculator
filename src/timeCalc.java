@@ -62,10 +62,18 @@ public class timeCalc {
                 resultHours = time1Hours_Int - time2Hours_Int;
                 resultMinutes = time1Minutes_Int - time2Minutes_Int;
 
-                if(resultHours > 0 && resultMinutes > 0){
-                    resultHours -= 23;
-                    resultMinutes -= 60;
+
+                resultHours -= 23;
+                resultMinutes -= 60;
+
+                resultHours = Math.abs(resultHours);
+                resultMinutes = Math.abs(resultMinutes);
+
+                if(resultMinutes >= 60){
+                    resultMinutes = 0;
+                    resultHours += 1;
                 }
+
 
                 if(resultHours == 0 && resultMinutes == 0){
                     System.out.println("0 / 24 hours");
