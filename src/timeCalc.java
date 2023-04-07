@@ -4,9 +4,11 @@ public class timeCalc {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //  input
-        System.out.print("Time 1: ");String time1 = sc.nextLine();
+        System.out.print("Time 1: ");
+        String time1 = sc.nextLine();
         System.out.println("=======");
-        System.out.print("Time 2: ");String time2 = sc.nextLine();
+        System.out.print("Time 2: ");
+        String time2 = sc.nextLine();
 
         //  removing ':'
         String[] stringArrayTimeValues_1 = time1.split(":");
@@ -33,7 +35,7 @@ public class timeCalc {
             counter++;
             arrTime1[i] = Integer.parseInt(stringArrayTimeValues_1[i]);
             temp = arrTime1[i];
-            if(counter == 1)
+            if (counter == 1)
                 time1Hours_Int = temp;
 
             if (counter == 2)
@@ -46,7 +48,7 @@ public class timeCalc {
             counter++;
             arrTime2[i] = Integer.parseInt(stringArrayTimeValues_2[i]);
             temp = arrTime2[i];
-            if(counter == 1)
+            if (counter == 1)
                 time2Hours_Int = temp;
 
             if (counter == 2)
@@ -69,20 +71,14 @@ public class timeCalc {
                 resultHours = Math.abs(resultHours);
                 resultMinutes = Math.abs(resultMinutes);
 
-                if(resultMinutes >= 60){
+                if (resultMinutes >= 60) {
                     resultMinutes = 0;
                     resultHours += 1;
                 }
 
-
-                if(resultHours == 0 && resultMinutes == 0){
-                    System.out.println("0 / 24 hours");
-                }
-
                 System.out.printf("\n%d hours and %d minutes.", Math.abs(resultHours), Math.abs(resultMinutes));
             }
-        }
-        else{
+        } else {
             System.out.println("invalid time!");
         }
 
