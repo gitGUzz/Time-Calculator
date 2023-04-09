@@ -71,40 +71,42 @@ public class timeCalc {
                 rH = H1_Int - H2_Int;
                 rM = M1_Int - M2_Int;
 
-                if (rH < 0){
-                    if(rM < 0) {
+                if (rH < 0) {
+                    if (rM < 0) {
                         rM = 60 + rM;
                         rH--;
                     }
-                    if(rM > 0){
+                    if (rM > 0) {
                         rM = 60 - rM;
                         rH++;
                     }
                 }
 
-                if(rH > 0){
-                    if(rM < 0) {
+                if (rH > 0) {
+                    if (rM < 0) {
                         rM = 60 + rM;
                         rH--;
                     }
-                    if(rM > 0){
+                    if (rM > 0) {
                         rM = 60 - rM;
                         rH++;
                         rH = 24 - rH;
                     }
                 }
 
+                if (H1_Int > H2_Int) {
+                    rH = 24 - rH;
+                }
 
                 System.out.printf("\nRESULTS:\n%d hours and %d minutes.\n" +
-                                  "%d minutes. ",
-                Math.abs(rH), Math.abs(rM), Math.abs((rH * 60) + rM));
+                                "%d minutes. ",
+                        Math.abs(rH), Math.abs(rM), Math.abs((rH * 60) + rM));
 
                 System.out.println();
             }
         } else {
             System.out.println("invalid time!");
         }
-
     }
 
 
