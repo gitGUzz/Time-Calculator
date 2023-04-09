@@ -1,8 +1,14 @@
 import java.util.Scanner;
 
 public class timeCalc {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("\n=========/=======================================\\======");
+        System.out.println("========/TIME DIFFERENCE CALCULATOR 24-HOUR FORMAT\\======");
+        System.out.println("=======/===========================================\\=======\n");
+
+
         //  input
         System.out.print("Time 1: ");
         String time1 = sc.nextLine();
@@ -11,76 +17,95 @@ public class timeCalc {
         String time2 = sc.nextLine();
 
         //  removing ':'
-        String[] stringArrayTimeValues_1 = time1.split(":");
-        String[] stringArrayTimeValues_2 = time2.split(":");
+        String[] stringATV1 = time1.split(":"); // "array time values"
+        String[] stringATV2 = time2.split(":");
 
         // parsing strings to ints
-        int[] arrTime1 = new int[stringArrayTimeValues_1.length];
-        int[] arrTime2 = new int[stringArrayTimeValues_2.length];
+        int[] aT1 = new int[stringATV1.length]; // "array time"
+        int[] aT2 = new int[stringATV2.length];
 
-        int time1Hours_Int = 0;
-        int time2Hours_Int = 0;
+        int H1_Int = 0; // "time(N)Hours_Int"
+        int H2_Int = 0;
 
-        int time1Minutes_Int = 0;
-        int time2Minutes_Int = 0;
+        int M1_Int = 0; // "time(N)Minutes_Int"
+        int M2_Int = 0;
 
         int temp = 0;
         int counter = 0;
 
-        int resultHours = 0;
-        int resultMinutes = 0;
+        int rH = 0; // "resultHours"
+        int rM = 0; // "resultMinutes"
 
 
-        for (int i = 0; i < stringArrayTimeValues_1.length; i++) {
+        // implementation string -> int
+        for (int i = 0; i < stringATV1.length; i++) {
             counter++;
-            arrTime1[i] = Integer.parseInt(stringArrayTimeValues_1[i]);
-            temp = arrTime1[i];
+            aT1[i] = Integer.parseInt(stringATV1[i]);
+            temp = aT1[i];
             if (counter == 1)
-                time1Hours_Int = temp;
+                H1_Int = temp;
 
             if (counter == 2)
-                time1Minutes_Int = temp;
+                M1_Int = temp;
 
             temp = 0; // reset
         }
         counter = 0; // reset from reaching 3
-        for (int i = 0; i < stringArrayTimeValues_2.length; i++) {
+        for (int i = 0; i < stringATV2.length; i++) {
             counter++;
-            arrTime2[i] = Integer.parseInt(stringArrayTimeValues_2[i]);
-            temp = arrTime2[i];
+            aT2[i] = Integer.parseInt(stringATV2[i]);
+            temp = aT2[i];
             if (counter == 1)
-                time2Hours_Int = temp;
+                H2_Int = temp;
 
             if (counter == 2)
-                time2Minutes_Int = temp;
+                M2_Int = temp;
 
             temp = 0; // reset
         }
 
         // check if the time is valid (120:46556)
-        if (time1Hours_Int >= 0 && time1Hours_Int <= 23 && time2Hours_Int >= 0 && time2Hours_Int <= 23) {
-            if (time1Minutes_Int >= 0 && time1Minutes_Int <= 59 && time2Minutes_Int >= 0 && time2Minutes_Int <= 59) {
+        if (H1_Int >= 0 && H1_Int <= 23 && H2_Int >= 0 && H2_Int <= 23) {
+            if (M1_Int >= 0 && M1_Int <= 59 && M2_Int >= 0 && M2_Int <= 59) {
 
-                resultHours = time1Hours_Int - time2Hours_Int;
-                resultMinutes = time1Minutes_Int - time2Minutes_Int;
+                rH = H1_Int - H2_Int;
+                rM = M1_Int - M2_Int;
 
-
-                resultHours -= 23;
-                resultMinutes -= 60;
-
-                resultHours = Math.abs(resultHours);
-                resultMinutes = Math.abs(resultMinutes);
-
-                if (resultMinutes >= 60) {
-                    resultMinutes = 0;
-                    resultHours += 1;
+                if (rH < 0){
+                    if(rM < 0) {
+                        rM = 60 + rM;
+                        rH--;
+                    }
+                    if(rM > 0){
+                        rM = 60 - rM;
+                        rH++;
+                    }
                 }
 
-                System.out.printf("\n%d hours and %d minutes.", Math.abs(resultHours), Math.abs(resultMinutes));
+                if(rH > 0){
+                    if(rM < 0) {
+                        rM = 60 + rM;
+                        rH--;
+                    }
+                    if(rM > 0){
+                        rM = 60 - rM;
+                        rH++;
+                        rH = 24 - rH;
+                    }
+                }
+
+
+                System.out.printf("\nRESULTS:\n%d hours and %d minutes.\n" +
+                                  "%d minutes. ",
+                Math.abs(rH), Math.abs(rM), Math.abs((rH * 60) + rM));
+
+                System.out.println();
             }
         } else {
             System.out.println("invalid time!");
         }
 
     }
+
+
 }
