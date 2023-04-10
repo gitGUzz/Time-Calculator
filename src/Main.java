@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class timeCalc {
+public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -92,7 +92,7 @@ public class timeCalc {
                         rH++;
                         rH = 24 - rH;
                     }
-                }
+                } // adding minutes changes output
 
                 if (H1_Int > H2_Int) {
                     rH = 24 - rH;
